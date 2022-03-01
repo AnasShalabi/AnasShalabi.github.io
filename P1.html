@@ -6,11 +6,32 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Anas Shalabi - MIPS ALU</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.float-img {
+				float: left; 
+				margin-right: 50px; 
+				margin-bottom: 5px; 
+				border: solid black 1px; 
+				padding: 2px
+			}
+
+			.customIndent {
+				padding-left: 75px;
+			}
+
+			.indenetBinary {
+				padding-left: 245px;
+			}
+			.indenetBinary2 {
+				padding-left: 234px;
+			}
+		</style>>
+
 	</head>
 	<body class="is-preload">
 
@@ -25,91 +46,176 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">This is Massively</a></li>
-							<li class="active"><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
+							<li><a href="index.html">Home</a></li>
+							<li class="active"><a href="generic.html">Projects</a></li>
+							<li><a href="elements.html">Resume</a></li>
 						</ul>
+						<ul class="icons">
+							<li>Contact: ShalabiA1214@gmail.com</li>
+						</ul>
+
+						<!--
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
+					-->
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
-
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is <br />
-									Project 1</h1>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<span class="date">February 2022</span>
+									<h1>MIPS ALU<br />
+									</h1>
+									<p>Designed a 32-bit Arithmetic Logic Unit (ALU) using CircuitVerse, SystemVerilog, ModelSim, and Quartus. This ALU will be used later in the next project: building a MIPS microprocessor.</p>
+
+									<p>
+										This ALU takes two 32-bit inputs and a function input that is 3-bits which supports AND, OR, ADD, SUBTRACT, SLT and a unique function called PATTERN MATCH. 
+										First, I designed each function to this ALU on CircuitVerse, a digital logic circuit simulator and wrote testbenches to ensure that each function worked properly. 
+										Next, I programmed all components of the ALU using SystemVerilog and tested my testbenches on ModelSim by simulating the waveforms.
+										Finally, I used Quartus to view the RTL schematics of the ALU and confirmed its design to the one on CircuitVerse.
+									</p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+								<div class="image fit"><img src="images/FullCircuit.png" alt="" /></div>
+
+								<p>
+									There are 3 outputs to this ALU: Y, Overflow flag, and a Zero flag. 
+									<br><span class = "customIndent"><b>Y</b>> is the computational output based on the inputs (A) (B) and the function input F <span>. 
+									<br><span class = "customIndent">The <b>Overflow Flag (OF)</b> indicates incorrect results for ADD and SUB operations.</span>
+									<br><span class = "customIndent">The output <b>Zero</b> is true (1) if Y is equal to zero.</span>
+								</p>
+
+								<img src="images/ALUFunctions.png" width = "400" heihgt = "200" alt="ALU Functions" 
+									class = "float-img"/>
+								
+								
+								<br><br>
+								<p>
+									These are the functions this ALU supports and as we can see there is no function for the OP code of <strong>011</strong>. 
+									This is where the unique function <strong>APPROXIMATE PATTERN MATCH (APM)</strong> will be used.
+								</p>
+	
+								<br><br>
+								<p><strong>Approximate Pattern Match (APM) works as follows:</strong></p>
+
+								<p>
+									Input A is a 32-bit Target string while input B is used in two different parts. B[15:0] is the actual pattern that will be matched within the 32-bit data of (A). 
+									<br> B[31:28], B[27:24], B[23:20], and B[19:16] specify 1 to 4 Don't Care (X) bit locations in the pattern B[15:0].
+									<br>For the output Y, it is 32-bit in length: 
+									<ul class = "customIndent">
+										<li>Y[16:0] is the <b>Matching Map</b> which indicates where the pattern B[15:0] matches A[i + 15, i] including the Don't Cares given from B[31:16].</li>
+										<li>Y[31:24] is the <b>Highest Matching Location</b> which encodes in binary the largest position where B[15:0] matched A[i + 15, i] with Don't Cares.</li>
+										<li>Y[23:17] are always 0.</li>
+									  </ul>
+								</p>
+
+								<body>
+									<p>
+										<b>For example</b>:
+										<br><span class = "customIndent"> 
+											A = <span style="background-color: #bdbcb5;">0101 1111 1111 1111 1111 1111 1111 1010 </span>(0x5FFFFFFA)
+										</span>
+
+										<br><span class = "customIndent"> 
+											B = <span style="background-color: #00f7ff;"> 0010 1111 0000 0010</span> <span style="background-color: #FFFF00;">0111 1111 1111 1110</span> (0x2F027FFE)
+											<br> <span class = "customIndent"> We can see that B[31:16] declares that positions <span style="background-color: #00f7ff;">0, 2, and 15 </span> of B[15:0] be Don't Cares.</span>
+											<br> <span class = "customIndent">Therefore, B[15:0] essentially looks like this: 
+												<span style="background-color: #00f7ff;">X</span>
+												<span style="background-color: #FFFF00;">111 1111 1111 1</span>
+												<span style="background-color: #00f7ff;">x</span>
+												<span style="background-color: #FFFF00;">1</span>
+												<span style="background-color: #00f7ff;">x</span>
+											</span>
+											<br><br><span class = "customIndent">0101 1111 1111 1111 1111 1111 1111 1010</span>
+											<br><span class = "indenetBinary">x111 1111 1111 1x1x</span>
+											<br><span class = "customIndent">As we can see, B[15:0] (including the Don't Cares) is being compared with A and the result is that this is a <span class = "customIndent">match so Y[0] will become a <b>1</b> and B[15:0] is then moved to left to compare another string from A.</span</span>
+											<br><span class = "customIndent">0101 1111 1111 1111 1111 1111 1111 1</span><span style="background-color: #db3b13;">0</span>10
+											<br><span class = "indenetBinary2">x111 1111 1111 1x</span><span style="background-color: #db3b13;">1</span>x
+											<br><span class = "customIndent">B[15:0] will continue moving 1-bit to the left and compare the corresponding bits of A. Now, this is not a <span class = "customIndent">match as there is a bit 0 being compared with a bit 1 so Y[1] will become a <b>0</b>.</span></span>
+											<br><br><span class = "customIndent">After all 17 comparisons (which is why Y[16:0], the Matching Map, is 17-bits) there are 14 matches:</span>
+											<br><span class = "customIndent">Y[16:0] = 0 0111 1111 1111 1101</span>
+											<br><span class = "customIndent">Y[31:24] = 0000 1110</span><span class = "customIndent">This is due to there being a match at bit 14 in Y[16:0]</span>
+											<br><span class = "customIndent">Y = 0000 1110 0000 0000 0111 1111 1111 1101</span> (0x0E007FFD)
+										</span>
+										
+								
+									</p>
+								</body>
+
+								<p>Here is a look inside the ALU itself:</p>
+								<div class="image fit"><img src="images/ALU.png" alt="CircuitVerse ALU" /></div>
+								
+								<p>For the addition and subtraction, only one adder is used due to its heavy cost and this is a TWOs Complement computation ALU. The adder used is a 32-bit Hierarchical - Carry Look Ahead Adder. 
+									The design for an HCLA has a similar structure to that of a tree. In the diagram below, red arrows are markings to see what direction each input/output
+									goes to. This design is the same for 16-bit, 8-bit, and onwards.</p>
+								<div class="image fit"><img src="images/ThirtyTwoBitHCLA.png" alt="32-bit HCLA" /></div>
+
+								<p style = "margin-bottom: 0;">
+									Next, I programmed all components of the ALU using SystemVerilog. <br>Here is the code of the top-level design for reference:
+								</p>
+								<p style="margin-top: 0; text-align: center;">
+									<br><b style = "text-align: center;">NOTE: I WILL NOT POST CODE FOR ALL COMPONENTS</b>
+
+									<div>
+										<img src="images/ALUSV.png" alt="ALU SV" width = "500" heihgt = "400">
+										<img src="images/ALUSV.png" alt="ALU SV" width = "500" heihgt = "400">
+									</div>
+
+								</p>
+
 							</section>
 
 					</div>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
+				<footer id="footer">
+					<section>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
 								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="text" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="3"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" class = "primary"/></li>
+							</ul>
+						</form>
+					</section>
+					<section class="split contact">
+						<section>
+							<h3>Email</h3>
+							<p>ShalabiA1214@gmail.com</p>
 						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
+						<section>
+							<h3>Social</h3>
+							<ul class="icons alt">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
 						</section>
-					</footer>
+					</section>
+				</footer>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+			<!-- Copyright -->
+				<div id="copyright">
+					<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
 
 			</div>
 
